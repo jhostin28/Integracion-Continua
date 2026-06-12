@@ -1,0 +1,15 @@
+name: Alerta Integracion Continua
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar notificacion a ntfy.sh
+        run: |
+          curl -d "Nuevo push en el repositorio de ${{ github.repository }} por ${{ github.actor }}" \
+               https://ntfy.sh/devops-itla
